@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api.js";
+import { hasConvexConfig } from "@/lib/env.ts";
 import { toast } from "sonner";
 import {
   BookOpen,
@@ -53,6 +54,14 @@ const EMPTY_FORM: FormState = {
 };
 
 export default function CollaborationSection() {
+  if (!hasConvexConfig) {
+    return <CollaborationSectionFallback />;
+  }
+
+  return <CollaborationSectionWithBackend />;
+}
+
+function CollaborationSectionWithBackend() {
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -361,6 +370,45 @@ export default function CollaborationSection() {
               </form>
             )}
           </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CollaborationSectionFallback() {
+  return (
+    <section
+      id="collaborate"
+      className="relative py-28 overflow-hidden"
+      style={{ background: "var(--regen-section-e)" }}
+    >
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+        <div
+          className="rounded-[28px] p-8 md:p-10"
+          style={{
+            background: "var(--regen-panel-bg)",
+            border: "1px solid var(--regen-panel-border)",
+            boxShadow: "var(--regen-card-shadow)",
+          }}
+        >
+          <h2
+            className="mb-4 text-3xl font-bold md:text-4xl"
+            style={{ color: "var(--regen-text-h)" }}
+          >
+            Collaboration inquiries
+          </h2>
+          <p
+            className="mx-auto max-w-2xl text-sm leading-relaxed md:text-base"
+            style={{ color: "var(--regen-text-body)" }}
+          >
+            The inquiry form is temporarily unavailable because the production backend has not
+            been configured yet. Add `VITE_CONVEX_URL` in Netlify and redeploy to enable form
+            submissions.
+          </p>
+          <p className="mt-4 text-sm" style={{ color: "var(--regen-text-subtle)" }}>
+            You can still publish the landing page safely while backend setup is being completed.
+          </p>
         </div>
       </div>
     </section>

@@ -1,10 +1,14 @@
+import { ConvexProvider as BaseConvexProvider, ConvexReactClient } from "convex/react";
 import { ConvexProviderWithHerculesAuth } from "@usehercules/auth/convex-react";
-import { ConvexReactClient } from "convex/react";
+import { appEnv, hasAuthConfig } from "@/lib/env.ts";
 
-const convexUrl = import.meta.env.VITE_CONVEX_URL ?? "http://localhost:3000";
-const convex = new ConvexReactClient(convexUrl);
+const convex = new ConvexReactClient(appEnv.convexUrl!);
 
 export function ConvexProvider({ children }: { children: React.ReactNode }) {
+  if (!hasAuthConfig) {
+    return <BaseConvexProvider client={convex}>{children}</BaseConvexProvider>;
+  }
+
   return (
     <ConvexProviderWithHerculesAuth client={convex}>
       {children}

@@ -4,20 +4,27 @@ import { QueryClientProvider } from "./query-client.tsx";
 import { ThemeProvider } from "./theme.tsx";
 import { Toaster } from "../ui/sonner.tsx";
 import { TooltipProvider } from "../ui/tooltip.tsx";
+import { hasAuthConfig, hasConvexConfig } from "@/lib/env.ts";
 
 export function DefaultProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <AuthProvider>
-      <ConvexProvider>
-        <QueryClientProvider>
-          <TooltipProvider>
-            <ThemeProvider>
-              <Toaster />
-              {children}
-            </ThemeProvider>
-          </TooltipProvider>
-        </QueryClientProvider>
-      </ConvexProvider>
-    </AuthProvider>
+  let tree = (
+    <QueryClientProvider>
+      <TooltipProvider>
+        <ThemeProvider>
+          <Toaster />
+          {children}
+        </ThemeProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
+
+  if (hasConvexConfig) {
+    tree = <ConvexProvider>{tree}</ConvexProvider>;
+  }
+
+  if (hasAuthConfig) {
+    tree = <AuthProvider>{tree}</AuthProvider>;
+  }
+
+  return tree;
 }
