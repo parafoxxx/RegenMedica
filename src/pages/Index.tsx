@@ -9,7 +9,7 @@ import Footer from "./_components/Footer.tsx";
 
 export default function Index() {
   return (
-    <div className="min-h-screen">
+    <div>
       <Navbar />
       <HeroSection />
       <AboutSection />

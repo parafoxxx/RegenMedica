@@ -9,7 +9,6 @@
  */
 
 import type * as collaborations from "../collaborations.js";
-import type * as users from "../users.js";
 
 import type {
   ApiFromModules,
@@ -19,7 +18,6 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   collaborations: typeof collaborations;
-  users: typeof users;
 }>;
 
 /**

@@ -1,17 +1,21 @@
+import { useMemo } from "react";
 import { ConvexProvider as BaseConvexProvider, ConvexReactClient } from "convex/react";
-import { ConvexProviderWithHerculesAuth } from "@usehercules/auth/convex-react";
-import { appEnv, hasAuthConfig } from "@/lib/env.ts";
-
-const convex = new ConvexReactClient(appEnv.convexUrl!);
+import { appEnv } from "@/lib/env.ts";
 
 export function ConvexProvider({ children }: { children: React.ReactNode }) {
-  if (!hasAuthConfig) {
-    return <BaseConvexProvider client={convex}>{children}</BaseConvexProvider>;
+  const convexUrl = appEnv.convexUrl;
+
+  if (!convexUrl) {
+    return <>{children}</>;
   }
 
-  return (
-    <ConvexProviderWithHerculesAuth client={convex}>
-      {children}
-    </ConvexProviderWithHerculesAuth>
-  );
+  try {
+    new URL(convexUrl);
+  } catch {
+    return <>{children}</>;
+  }
+
+  const client = useMemo(() => new ConvexReactClient(convexUrl), [convexUrl]);
+
+  return <BaseConvexProvider client={client}>{children}</BaseConvexProvider>;
 }

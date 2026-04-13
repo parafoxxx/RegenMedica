@@ -1,10 +1,9 @@
-import { AuthProvider } from "./auth.tsx";
 import { ConvexProvider } from "./convex.tsx";
 import { QueryClientProvider } from "./query-client.tsx";
 import { ThemeProvider } from "./theme.tsx";
 import { Toaster } from "../ui/sonner.tsx";
 import { TooltipProvider } from "../ui/tooltip.tsx";
-import { hasAuthConfig, hasConvexConfig } from "@/lib/env.ts";
+import { hasConvexConfig } from "@/lib/env.ts";
 
 export function DefaultProviders({ children }: { children: React.ReactNode }) {
   let tree = (
@@ -20,10 +19,6 @@ export function DefaultProviders({ children }: { children: React.ReactNode }) {
 
   if (hasConvexConfig) {
     tree = <ConvexProvider>{tree}</ConvexProvider>;
-  }
-
-  if (hasAuthConfig) {
-    tree = <AuthProvider>{tree}</AuthProvider>;
   }
 
   return tree;

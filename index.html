@@ -6,21 +6,20 @@
 
     <title>Regenmedica Pvt. Ltd. | Engineering the Future of Regenerative Medicine</title>
     <meta name="description" content="Regenmedica develops advanced polymeric and ceramic biomaterials for next-generation tissue repair and healing. Founded 2022." />
-    <meta name="author" content="Hercules" />
+    <meta name="author" content="Regenmedica" />
     <link
       rel="icon"
       type="image/svg+xml"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
     />
 
-    <meta property="og:title" content="Hercules App" />
+    <meta property="og:title" content="Regenmedica Pvt. Ltd." />
     <meta
       property="og:description"
-      content="An app made by https://hercules.app"
+      content="Regenmedica develops advanced biomaterials for regenerative medicine and tissue repair."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@UseHercules" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,11 +35,8 @@
       (function () {
         try {
           var theme = localStorage.getItem("theme");
-          if (theme === "system" || !theme) {
-            var prefersDark = window.matchMedia(
-              "(prefers-color-scheme: dark)",
-            ).matches;
-            theme = prefersDark ? "dark" : "light";
+          if (theme !== "dark" && theme !== "light") {
+            theme = "light";
           }
           document.documentElement.classList.add(theme);
         } catch (e) {}
