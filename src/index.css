@@ -1,0 +1,266 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans:
+    "Manrope", "Space Grotesk", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-serif:
+    "Fraunces", "Noto Serif", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.004 240);
+  --foreground: oklch(0.15 0.055 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.055 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.055 250);
+  --primary: oklch(0.22 0.09 248);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.93 0.03 200);
+  --secondary-foreground: oklch(0.22 0.09 248);
+  --muted: oklch(0.95 0.012 230);
+  --muted-foreground: oklch(0.52 0.04 245);
+  --accent: oklch(0.58 0.14 192);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.018 230);
+  --input: oklch(0.91 0.018 230);
+  --ring: oklch(0.58 0.14 192);
+  --chart-1: oklch(0.58 0.14 192);
+  --chart-2: oklch(0.65 0.15 162);
+  --chart-3: oklch(0.22 0.09 248);
+  --chart-4: oklch(0.7 0.12 210);
+  --chart-5: oklch(0.75 0.1 195);
+  --sidebar: oklch(0.985 0.004 240);
+  --sidebar-foreground: oklch(0.15 0.055 250);
+  --sidebar-primary: oklch(0.22 0.09 248);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.93 0.03 200);
+  --sidebar-accent-foreground: oklch(0.22 0.09 248);
+  --sidebar-border: oklch(0.9 0.018 230);
+  --sidebar-ring: oklch(0.58 0.14 192);
+}
+
+.dark {
+  --background: oklch(0.13 0.04 248);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.18 0.05 248);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.18 0.05 248);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.65 0.15 192);
+  --primary-foreground: oklch(0.13 0.04 248);
+  --secondary: oklch(0.22 0.06 248);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.22 0.05 248);
+  --muted-foreground: oklch(0.65 0.04 240);
+  --accent: oklch(0.62 0.14 192);
+  --accent-foreground: oklch(0.13 0.04 248);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.14 192);
+  --chart-1: oklch(0.62 0.14 192);
+  --chart-2: oklch(0.68 0.16 162);
+  --chart-3: oklch(0.75 0.1 195);
+  --chart-4: oklch(0.65 0.13 210);
+  --chart-5: oklch(0.7 0.12 180);
+  --sidebar: oklch(0.18 0.05 248);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: oklch(0.65 0.15 192);
+  --sidebar-primary-foreground: oklch(0.13 0.04 248);
+  --sidebar-accent: oklch(0.22 0.06 248);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.62 0.14 192);
+}
+
+:root {
+  --regen-section-a:
+    radial-gradient(circle at top right, rgba(8, 145, 178, 0.08), transparent 26%),
+    linear-gradient(180deg, #f5fbff 0%, #eaf4fb 100%);
+  --regen-section-b:
+    radial-gradient(circle at top left, rgba(14, 165, 200, 0.07), transparent 24%),
+    linear-gradient(180deg, #edf5fb 0%, #f4f9fc 100%);
+  --regen-section-c:
+    radial-gradient(circle at bottom right, rgba(34, 211, 200, 0.07), transparent 28%),
+    linear-gradient(180deg, #f3f8fc 0%, #eaf3f8 100%);
+  --regen-section-d:
+    radial-gradient(circle at center left, rgba(8, 145, 178, 0.06), transparent 30%),
+    linear-gradient(180deg, #edf5fb 0%, #f6fbff 100%);
+  --regen-section-e:
+    radial-gradient(circle at top center, rgba(34, 211, 200, 0.06), transparent 26%),
+    linear-gradient(180deg, #f7fbff 0%, #ecf5fb 100%);
+  --regen-footer-bg: linear-gradient(180deg, #d8e9f4 0%, #cce0ed 100%);
+
+  --regen-text-h: #0c1a3a;
+  --regen-text-body: rgba(12, 26, 58, 0.62);
+  --regen-text-muted: rgba(12, 26, 58, 0.42);
+  --regen-text-subtle: rgba(12, 26, 58, 0.28);
+
+  --regen-card-bg: rgba(255, 255, 255, 0.9);
+  --regen-card-border: rgba(8, 145, 178, 0.14);
+  --regen-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --regen-panel-bg: rgba(255, 255, 255, 0.75);
+  --regen-panel-border: rgba(8, 145, 178, 0.18);
+  --regen-panel-strong: rgba(255, 255, 255, 0.92);
+  --regen-grid-line: rgba(8, 145, 178, 0.08);
+
+  --regen-divider: rgba(8, 145, 178, 0.14);
+  --regen-tag-bg: rgba(8, 145, 178, 0.08);
+  --regen-tag-border: rgba(8, 145, 178, 0.22);
+  --regen-stat-bg: rgba(8, 145, 178, 0.05);
+  --regen-stat-border: rgba(8, 145, 178, 0.13);
+  --regen-input-bg: rgba(255, 255, 255, 0.95);
+  --regen-input-border: rgba(8, 145, 178, 0.2);
+  --regen-input-color: #0c1a3a;
+  --regen-input-option-bg: #f0f8ff;
+  --regen-nav-scrolled: rgba(255, 255, 255, 0.92);
+  --regen-nav-border-scrolled: rgba(8, 145, 178, 0.12);
+  --regen-nav-link: rgba(12, 26, 58, 0.65);
+  --regen-nav-link-hover: #0c1a3a;
+  --regen-orb-opacity: 0.18;
+
+  --regen-hero-bg:
+    radial-gradient(circle at top right, rgba(34, 211, 200, 0.14), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(8, 145, 178, 0.12), transparent 28%),
+    linear-gradient(135deg, #eef7fc 0%, #d8eaf4 48%, #e8f4fa 100%);
+  --regen-hero-stat-gradient: linear-gradient(135deg, #0c1a3a 0%, #0891b2 100%);
+  --regen-hero-scroll-border: rgba(8, 145, 178, 0.25);
+  --regen-hero-scroll-dot: #0891b2;
+}
+
+.dark {
+  --regen-section-a:
+    radial-gradient(circle at top right, rgba(34, 211, 200, 0.04), transparent 24%),
+    linear-gradient(180deg, #0b1326 0%, #111a31 100%);
+  --regen-section-b:
+    radial-gradient(circle at top left, rgba(34, 211, 200, 0.035), transparent 24%),
+    linear-gradient(180deg, #10192f 0%, #0d162a 100%);
+  --regen-section-c:
+    radial-gradient(circle at bottom right, rgba(34, 211, 200, 0.035), transparent 28%),
+    linear-gradient(180deg, #0d162a 0%, #0a1223 100%);
+  --regen-section-d:
+    radial-gradient(circle at center left, rgba(34, 211, 200, 0.03), transparent 28%),
+    linear-gradient(180deg, #0a1223 0%, #10192d 100%);
+  --regen-section-e:
+    radial-gradient(circle at top center, rgba(34, 211, 200, 0.03), transparent 26%),
+    linear-gradient(180deg, #10192d 0%, #09111f 100%);
+  --regen-footer-bg: linear-gradient(180deg, #09111f 0%, #060d18 100%);
+
+  --regen-text-h: #ffffff;
+  --regen-text-body: rgba(235, 241, 248, 0.72);
+  --regen-text-muted: rgba(200, 213, 226, 0.56);
+  --regen-text-subtle: rgba(170, 188, 204, 0.34);
+
+  --regen-card-bg: rgba(17, 26, 45, 0.94);
+  --regen-card-border: rgba(150, 175, 196, 0.1);
+  --regen-card-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  --regen-panel-bg: rgba(255, 255, 255, 0.02);
+  --regen-panel-border: rgba(110, 199, 196, 0.1);
+  --regen-panel-strong: rgba(13, 21, 38, 0.88);
+  --regen-grid-line: rgba(116, 141, 166, 0.07);
+
+  --regen-divider: rgba(150, 175, 196, 0.1);
+  --regen-tag-bg: rgba(110, 199, 196, 0.05);
+  --regen-tag-border: rgba(110, 199, 196, 0.1);
+  --regen-stat-bg: rgba(255, 255, 255, 0.015);
+  --regen-stat-border: rgba(150, 175, 196, 0.08);
+  --regen-input-bg: rgba(255, 255, 255, 0.04);
+  --regen-input-border: rgba(150, 175, 196, 0.12);
+  --regen-input-color: #ffffff;
+  --regen-input-option-bg: #10192f;
+  --regen-nav-scrolled: rgba(10, 17, 31, 0.9);
+  --regen-nav-border-scrolled: rgba(150, 175, 196, 0.08);
+  --regen-nav-link: rgba(234, 241, 248, 0.7);
+  --regen-nav-link-hover: #ffffff;
+  --regen-orb-opacity: 0.05;
+
+  --regen-hero-bg:
+    radial-gradient(circle at top right, rgba(110, 199, 196, 0.08), transparent 20%),
+    radial-gradient(circle at bottom left, rgba(50, 130, 170, 0.08), transparent 25%),
+    linear-gradient(135deg, #091120 0%, #10192f 45%, #0d172b 100%);
+  --regen-hero-stat-gradient: linear-gradient(135deg, #f8fbff 0%, #63d4c8 100%);
+  --regen-hero-scroll-border: rgba(110, 199, 196, 0.18);
+  --regen-hero-scroll-dot: #63d4c8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--regen-grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--regen-grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 70%);
+    z-index: -1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.13 0.04 248);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.58 0.14 192 / 0.6);
+  border-radius: 3px;
+}
